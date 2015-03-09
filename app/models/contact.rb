@@ -22,7 +22,8 @@ class Contact < ActiveRecord::Base
   has_many :contact_shares,
     foreign_key: :contact_id,
     primary_key: :id,
-    class_name: 'ContactShare'
+    class_name: 'ContactShare',
+    dependent: :destroy
 
   has_many :shared_users,
     through: :contact_shares,
