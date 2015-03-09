@@ -45,4 +45,6 @@ group :development, :test do
   gem 'rest-client'
 
   gem 'addressable'
+
+  gem 'pry-rails'
 end
