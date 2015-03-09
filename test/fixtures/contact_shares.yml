@@ -1,11 +1,12 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: contact_shares
 #
 #  id         :integer          not null, primary key
-#  username   :string           not null
-#  created_at :datetime
-#  updated_at :datetime
+#  contact_id :integer          not null
+#  user_id    :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
