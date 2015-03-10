@@ -14,6 +14,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def favorite_contacts
+    @user = User.find(params[:id])
+    own_favorites = @user.contacts.where(owner_favorite: 'true')
+    shared_favorites = @user.contact_shares.where(user_favorite: 'true').map(&:contact)
+    render json: own_favorites + shared_favorites
+  end
+
   def show
     render json: User.find(params[:id])
   end

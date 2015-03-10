@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309225128) do
+ActiveRecord::Schema.define(version: 20150310000149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,10 +29,11 @@ ActiveRecord::Schema.define(version: 20150309225128) do
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
 
   create_table "contact_shares", force: :cascade do |t|
-    t.integer  "contact_id", null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "contact_id",                    null: false
+    t.integer  "user_id",                       null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.boolean  "user_favorite", default: false, null: false
   end
 
   add_index "contact_shares", ["contact_id", "user_id"], name: "index_contact_shares_on_contact_id_and_user_id", unique: true, using: :btree
@@ -40,11 +41,12 @@ ActiveRecord::Schema.define(version: 20150309225128) do
   add_index "contact_shares", ["user_id"], name: "index_contact_shares_on_user_id", using: :btree
 
   create_table "contacts", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "email",      null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",                           null: false
+    t.string   "email",                          null: false
+    t.integer  "user_id",                        null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "owner_favorite", default: false, null: false
   end
 
   add_index "contacts", ["user_id", "email"], name: "index_contacts_on_user_id_and_email", unique: true, using: :btree
